@@ -39,22 +39,6 @@ class UsuarioDAO
         }
     }
 
-
-
-    // Use prepared statements to prevent SQL injection
-    // $stmt = $conn->prepare("INSERT INTO usuarios (codigo, nome, cpf, email, senha) VALUES (null, ?, ?, ?, ?)");
-    // $stmt->bind_param("ssss", $nome, $cpf, $email, $senha);
-
-    // if ($stmt->execute()) {
-    // $stmt->close();
-//return true;
-    //  } else {
-    //  $stmt->close();
-    // echo "Error: " . $stmt->error;
-    //  return false;
-    //  }
-
-
     public function findAll()
     {
         $conexao = new Conexao();
