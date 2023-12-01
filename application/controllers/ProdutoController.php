@@ -37,26 +37,26 @@ class ProdutoController extends Controller
 
     public function iniciarEditar($codigo)
     {
-        // 1 - Buscar os dados
+  
         $produtoDAO = new ProdutoDAO();
         $produto = $produtoDAO->findById($codigo);
-        // 2 - Mostrar na view
+       
         $this->view('produto/editar', ["produto" => $produto]);
     }
 
     public function atualizar()
     {
-        //RECEBE OS DADOS
+       
         $codigo = filter_input(INPUT_POST, "codigo");
         $nome = filter_input(INPUT_POST, "nome");
         $marca = filter_input(INPUT_POST, "marca");
         $preco = filter_input(INPUT_POST, "preco");
         $imagem = filter_input(INPUT_POST, "imagem");
 
-        //CRIA O OBJETO
+        
         $produto = new Produto($nome, $marca, $preco, $imagem);
         $produto->setCodigo($codigo);
-        //CRIA O PRODUTO DAO
+        
         $produtoDAO = new ProdutoDAO();
         $produtoAtualizado = $produtoDAO->atualizar($produto);
         if ($produtoAtualizado) {

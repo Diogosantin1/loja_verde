@@ -56,7 +56,7 @@ class UsuarioDAO
         return $usuarios;
     }
 
-    // Retrieve (R)
+   
     public function findById($id)
     {
         $conexao = new Conexao();
@@ -75,7 +75,7 @@ class UsuarioDAO
         $conexao = new Conexao();
         $conn = $conexao->getConexao();
 
-        // Use prepared statements para evitar injeção de SQL
+        
         $stmt = $conn->prepare("SELECT * FROM usuarios WHERE nome LIKE ?");
         $termo = "%" . $termo . "%";
         $stmt->bind_param("s", $termo);
@@ -95,42 +95,6 @@ class UsuarioDAO
 
         return $usuarios;
     }
-
-   /*
-    public function buscarPorEmail($email)
-    {
-        $conexao = new Conexao();
-        $conn = $conexao->getConexao();
-
-        $nome = $conn->real_escape_string($email);
-
-        $SQL = "SELECT * FROM usuarios WHERE nome LIKE '%$email%'";
-
-        try {
-            $result = $conn->query($SQL);
-
-            $usuarios = [];
-
-            while ($row = $result->fetch_assoc()) {
-                $usuario = new Usuario(
-                    $row['nome'],
-                    $row['cpf'],
-                    $row['email'],
-                    $row['senha']
-                );
-
-                array_push($usuarios, $usuario);
-            }
-
-            return $usuarios;
-        } catch (\Exception $e) {
-            return null;
-        }
-    }
-
-*/
-
-
 
 public function buscarPorEmail($email)
 {
@@ -156,7 +120,7 @@ public function buscarPorEmail($email)
 
             return $usuario;
         } else {
-            return null; // Usuário não encontrado
+            return null; 
         }
     } catch (\Exception $e) {
         return null;
@@ -165,7 +129,7 @@ public function buscarPorEmail($email)
 
 
 
-    // Update (U)
+   
     public function atualizar($usuario)
     {
         $conexao = new Conexao();
@@ -177,7 +141,7 @@ public function buscarPorEmail($email)
         $email = $usuario->getEmail();
         $senha = $usuario->getSenha();
 
-        // Use prepared statements to prevent SQL injection
+    
         $stmt = $conn->prepare("UPDATE usuarios SET nome = ?, cpf = ?, email = ?, senha = ? WHERE codigo = ?");
         $stmt->bind_param("ssssi", $nome, $cpf, $email, $senha, $codigo);
 
@@ -191,13 +155,13 @@ public function buscarPorEmail($email)
         }
     }
 
-    // Delete (D)
+
     public function deletar($id)
     {
         $conexao = new Conexao();
         $conn = $conexao->getConexao();
 
-        // Use prepared statements to prevent SQL injection
+        
         $stmt = $conn->prepare("DELETE FROM usuarios WHERE codigo = ?");
         $stmt->bind_param("i", $id);
 
@@ -209,29 +173,5 @@ public function buscarPorEmail($email)
             return false;
         }
     }
-
-    // Autenticação
-    // public function autenticar($email, $senha) {
-    //     $conexao = new Conexao();
-    //     $conn = $conexao->getConexao();
-
-    //     // Use prepared statements to prevent SQL injection
-    //     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
-    //     $stmt->bind_param("s", $email);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-
-    //     $row = $result->fetch_assoc();
-
-    //     $stmt->close();
-
-    //     if ($row && password_verify($senha, $row['senha'])) {
-    //         $usuario = new Usuario($row["nome"], $row["cpf"], $row["email"], $row["senha"]);
-    //         $usuario->setCodigo($row["codigo"]);
-    //         return $usuario;
-    //     }
-
-    //     return null;
-    // }
 }
 ?>

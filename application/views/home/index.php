@@ -1,7 +1,7 @@
 <?php
 $base = __DIR__;
 include $base . '\..\layout\menu.php';
-//debug_print_backtrace();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

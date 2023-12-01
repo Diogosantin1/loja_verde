@@ -29,7 +29,7 @@ include $base .'\..\layout\menu.php';
         margin: 20px 0;
         padding: 15px;
         border-radius: 4px;
-        text-align: center; /* Centraliza o texto */
+        text-align: center; 
     }
 
     .alert-success {

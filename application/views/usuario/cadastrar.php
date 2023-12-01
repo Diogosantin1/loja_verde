@@ -1,7 +1,7 @@
 <?php
 $base = __DIR__;
 include $base .'\..\layout\menu.php'; 
-//debug_print_backtrace();
+
  ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ include $base .'\..\layout\menu.php';
 
         h1 {
             color: #333;
-            text-align: center; /* Adicione esta linha para centralizar o texto */
+            text-align: center; 
         }
 
         form {
@@ -58,7 +58,7 @@ include $base .'\..\layout\menu.php';
         }
 
         .alert {
-            text-align: center; /* Centraliza o texto */
+            text-align: center; 
             margin: 20px 0;
             padding: 15px;
             border-radius: 4px;

@@ -30,7 +30,7 @@ if (!isset($_SESSION))
 
     .nav-link:hover {
         color: #aaa;
-        /* Cor quando hover (passe o mouse) */
+       
     }
 
     .active {
